@@ -17,7 +17,7 @@ class TaskDataProvider {
 
   getTreeItem(element) {
     const treeItem = new vscode.TreeItem(
-      `${element.label.padEnd(100)} ${element.time}`, // Adjust padding as needed for alignment
+      `${element.label.padEnd(100 + (6-element?.label?.length))} ${element.time}`, // Adjust padding as needed for alignment
       vscode.TreeItemCollapsibleState.None
     );
     // Set context value based on the running state

@@ -23,11 +23,11 @@ function activate(context) {
 
   // Register commands
   context.subscriptions.push(
-    vscode.commands.registerCommand('efficient.showTaskManager', () => {
+    vscode.commands.registerCommand('extension.showTaskManager', () => {
       taskManagerView.show();
     }),
 
-    vscode.commands.registerCommand('efficient.addTask', async () => {
+    vscode.commands.registerCommand('extension.addTask', async () => {
       console.log('extensionMain: addTask command called');
 
       // Show input box to get task label from user
@@ -47,15 +47,15 @@ function activate(context) {
       }
     }),
 
-    vscode.commands.registerCommand('efficient.startTask', (task) => {
+    vscode.commands.registerCommand('extension.startTask', (task) => {
       startTaskTimer(task);
     }),
 
-    vscode.commands.registerCommand('efficient.stopTask', () => {
+    vscode.commands.registerCommand('extension.stopTask', () => {
       stopTaskTimer();
     }),
     
-    vscode.commands.registerCommand('efficient.removeTask', (task) => {
+    vscode.commands.registerCommand('extension.removeTask', (task) => {
       removeTask();
     }),
 
@@ -102,7 +102,7 @@ function startTaskTimer(task) {
   statusBarItem.text = `${taskLabel} - ${formatTime(seconds)}`;
   statusBarItem.show();
   statusBarItem.command = {
-    command: 'efficient.stopTask',
+    command: 'extension.stopTask',
     title: 'Stop Task',
     arguments: [task]
   };

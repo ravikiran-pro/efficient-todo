@@ -3,7 +3,7 @@
   "displayName": "Efficient Todo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ravikiran-pro/efficient-todo.git"
+    "url": "https://github.com/ravikiran-pro/extension.git"
   },
   "publisher": "efficient-todo",
   "description": "Track todo of your coding activities with pomodoro and timer",
@@ -15,10 +15,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:efficient-todo.showTaskManager",
-    "onCommand:efficient-todo.addTask",
-    "onCommand:efficient-todo.startTask",
-    "onCommand:efficient-todo.stopTask",
+    "onCommand:extension.showTaskManager",
+    "onCommand:extension.addTask",
+    "onCommand:extension.startTask",
+    "onCommand:extension.stopTask",
     "onView:taskManager"
   ],
   "main": "./out/extension.js",
@@ -48,36 +48,41 @@
     },
     "commands": [
       {
-        "command": "efficient-todo.showTaskManager",
+        "command": "extension.showTaskManager",
         "title": "Show Task Manager"
       },
       {
-        "command": "efficient-todo.addTask",
+        "command": "extension.addTask",
         "title": "Add Task"
       },
       {
-        "command": "efficient-todo.startTask",
+        "command": "extension.startTask",
         "title": "Start Task",
         "internal": true
       },
       {
-        "command": "efficient-todo.stopTask",
+        "command": "extension.stopTask",
         "title": "Stop Task"
       },
       {
-        "command": "efficient-todo.removeTask",
+        "command": "extension.removeTask",
         "title": "Remove Task"
       }
     ],
     "menus": {
       "view/item/context": [
         {
-          "command": "efficient-todo.startTask",
+          "command": "extension.startTask",
           "when": "view == taskManager",
           "group": "inline"
         },
         {
-          "command": "efficient-todo.stopTask",
+          "command": "extension.stopTask",
+          "when": "view == taskManager",
+          "group": "inline"
+        },
+        {
+          "command": "extension.removeTask",
           "when": "view == taskManager",
           "group": "inline"
         }
