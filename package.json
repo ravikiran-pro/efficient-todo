@@ -1,6 +1,10 @@
 {
   "name": "efficient-todo",
-  "displayName": "my-task-manager-extension",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ravikiran-pro/efficietn-todo.git"
+  },
+  "displayName": "efficient-todo",
   "description": "track todo of your coding activities with pomodoro and timer",
   "version": "0.0.1",
   "engines": {
