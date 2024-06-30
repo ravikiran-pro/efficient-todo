@@ -1,0 +1,103 @@
+{
+  "name": "efficient-todo",
+  "displayName": "my-task-manager-extension",
+  "description": "track todo of your coding activities with pomodoro and timer",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.56.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.showTaskManager",
+    "onCommand:extension.addTask",
+    "onCommand:extension.startTask",
+    "onCommand:extension.stopTask",
+    "onView:taskManager"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "taskManager",
+          "title": "Task Manager",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "taskManager",
+          "name": "Task Manager"
+        }
+      ],
+      "taskManager": [
+        {
+          "id": "taskList",
+          "name": "Tasks"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "extension.showTaskManager",
+        "title": "Show Task Manager"
+      },
+      {
+        "command": "extension.addTask",
+        "title": "Add Task"
+      },
+      {
+        "command": "extension.startTask",
+        "title": "Start Task",
+        "internal": true
+      },
+      {
+        "command": "extension.stopTask",
+        "title": "Stop Task"
+      },
+      {
+        "command": "extension.removeTask",
+        "title": "Remove Task"
+      }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "extension.startTask",
+          "when": "view == taskManager",
+          "group": "inline"
+        },
+        {
+          "command": "extension.stopTask",
+          "when": "view == taskManager",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Pomodoro Settings",
+      "properties": {
+        "pomodoro.duration": {
+          "type": "number",
+          "default": 25,
+          "description": "Duration of a pomodoro session in minutes"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "mkdir -p out && cp -r src/* out && cp -r media out && cp package.json out && cp README.md out",
+    "vscode:prepublish": "npm run build",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "echo \"No tests yet...\""
+  },
+  "devDependencies": {
+    "vscode": "^1.1.36",
+    "node-cron": "^3.0.0"
+  }
+}
