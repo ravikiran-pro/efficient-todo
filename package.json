@@ -7,7 +7,7 @@
   },
   "publisher": "efficient-todo",
   "description": "Track todo of your coding activities with pomodoro and timer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.56.0"
   },
