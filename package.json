@@ -1,9 +1,9 @@
 {
   "name": "efficient-todo",
-  "displayName": "Efficient Todo",
+  "displayName": "efficient-todo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ravikiran-pro/extension.git"
+    "url": "https://github.com/ravikiran-pro/efficient-todo.git"
   },
   "publisher": "efficient-todo",
   "description": "Track todo of your coding activities with pomodoro and timer",
@@ -15,10 +15,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.showTaskManager",
-    "onCommand:extension.addTask",
-    "onCommand:extension.startTask",
-    "onCommand:extension.stopTask",
+    "onCommand:efficient-todo.showTaskManager",
+    "onCommand:efficient-todo.addTask",
+    "onCommand:efficient-todo.startTask",
+    "onCommand:efficient-todo.stopTask",
     "onView:taskManager"
   ],
   "main": "./out/extension.js",
@@ -26,14 +26,14 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "taskManager",
+          "id": "taskManagerActivityBar",
           "title": "Task Manager",
           "icon": "media/icon.svg"
         }
       ]
     },
     "views": {
-      "explorer": [
+      "taskManagerActivityBar": [
         {
           "id": "taskManager",
           "name": "Task Manager"
@@ -48,41 +48,35 @@
     },
     "commands": [
       {
-        "command": "extension.showTaskManager",
-        "title": "Show Task Manager"
+        "command": "efficient-todo.showTaskManager",
+        "title": "Show Task Manager",
+        "internal": true
       },
       {
-        "command": "extension.addTask",
+        "command": "efficient-todo.addTask",
+        "category": "efficient-todo",
         "title": "Add Task"
       },
       {
-        "command": "extension.startTask",
+        "command": "efficient-todo.startTask",
         "title": "Start Task",
         "internal": true
       },
       {
-        "command": "extension.stopTask",
+        "command": "efficient-todo.stopTask",
+        "category": "efficient-todo",
         "title": "Stop Task"
       },
       {
-        "command": "extension.removeTask",
+        "command": "efficient-todo.removeTask",
+        "category": "efficient-todo",
         "title": "Remove Task"
       }
     ],
     "menus": {
       "view/item/context": [
         {
-          "command": "extension.startTask",
-          "when": "view == taskManager",
-          "group": "inline"
-        },
-        {
-          "command": "extension.stopTask",
-          "when": "view == taskManager",
-          "group": "inline"
-        },
-        {
-          "command": "extension.removeTask",
+          "command": "efficient-todo.removeTask",
           "when": "view == taskManager",
           "group": "inline"
         }

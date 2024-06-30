@@ -23,11 +23,11 @@ function activate(context) {
 
   // Register commands
   context.subscriptions.push(
-    vscode.commands.registerCommand('extension.showTaskManager', () => {
+    vscode.commands.registerCommand('efficient-todo.showTaskManager', () => {
       taskManagerView.show();
     }),
 
-    vscode.commands.registerCommand('extension.addTask', async () => {
+    vscode.commands.registerCommand('efficient-todo.addTask', async () => {
       console.log('extensionMain: addTask command called');
 
       // Show input box to get task label from user
@@ -47,16 +47,16 @@ function activate(context) {
       }
     }),
 
-    vscode.commands.registerCommand('extension.startTask', (task) => {
+    vscode.commands.registerCommand('efficient-todo.startTask', (task) => {
       startTaskTimer(task);
     }),
 
-    vscode.commands.registerCommand('extension.stopTask', () => {
+    vscode.commands.registerCommand('efficient-todo.stopTask', () => {
       stopTaskTimer();
     }),
     
-    vscode.commands.registerCommand('extension.removeTask', (task) => {
-      removeTask();
+    vscode.commands.registerCommand('efficient-todo.removeTask', (task) => {
+      removeTask(task);
     }),
 
   );
@@ -68,11 +68,15 @@ function activate(context) {
   console.log('extensionMain: register tasks');
 }
 
-function removeTask() {
-  taskTimers[currentTaskLabel].stop();
-  delete taskTimers[currentTaskLabel];
-  taskDataProvider.removeTask(currentTaskLabel);
-  statusBarItem.hide();
+function removeTask(task) {
+  if(currentTaskLabel){
+    taskTimers[currentTaskLabel].stop();
+    delete taskTimers[currentTaskLabel];
+    taskDataProvider.removeTask(currentTaskLabel);
+    statusBarItem.hide();
+  }else{
+    taskDataProvider.removeTask(task.label);
+  }
   currentTaskLabel = null;
 }
 
@@ -102,7 +106,7 @@ function startTaskTimer(task) {
   statusBarItem.text = `${taskLabel} - ${formatTime(seconds)}`;
   statusBarItem.show();
   statusBarItem.command = {
-    command: 'extension.stopTask',
+    command: 'efficient-todo.stopTask',
     title: 'Stop Task',
     arguments: [task]
   };

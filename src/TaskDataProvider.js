@@ -25,7 +25,7 @@ class TaskDataProvider {
 
     // Set command for the tree item
     treeItem.command = {
-      command: 'extension.startTask', // Command to be invoked on click
+      command: 'efficient-todo.startTask', // Command to be invoked on click
       title: 'Start Task', // Title displayed on hover
       arguments: [element] // Arguments to pass to the command function
     };
@@ -33,7 +33,7 @@ class TaskDataProvider {
     // Set context menu for the tree item
     treeItem.contextMenu = [
       {
-        command: 'extension.removeTask',
+        command: 'efficient-todo.removeTask',
         title: 'Remove',
         arguments: [element]
       }
