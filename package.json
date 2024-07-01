@@ -14,13 +14,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:efficient-todo.showTaskManager",
-    "onCommand:efficient-todo.addTask",
-    "onCommand:efficient-todo.startTask",
-    "onCommand:efficient-todo.stopTask",
-    "onView:taskManager"
-  ],
+  "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "viewsContainers": {
