@@ -1,18 +1,16 @@
 const vscode = require('vscode');
 
 class TaskDataProvider {
-  constructor() {
+  constructor(storedTasks, context) {
     this._onDidChangeTreeData = new vscode.EventEmitter();
+    this.context = context;
     this.onDidChangeTreeData = this._onDidChangeTreeData.event;
-    this.tasks = [
-      { label: 'Task 1', time: '00:00', running: false },
-      { label: 'Task 2', time: '00:00', running: false },
-      { label: 'Task 3', time: '00:00', running: false }
-    ]; // Replace with actual task data or fetch dynamically
+    this.tasks = storedTasks;
   }
 
   refresh() {
     this._onDidChangeTreeData.fire();
+    this.context.globalState.update('tasks', this.tasks);
   }
 
   getTreeItem(element) {

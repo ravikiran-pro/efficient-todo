@@ -13,7 +13,8 @@ function activate(context) {
   console.log('Congratulations, your extension "my-task-manager-extension" is now active!');
 
   // Create instances of TaskDataProvider and TaskManagerView
-  taskDataProvider = new TaskDataProvider();
+  const storedTasks = context.globalState.get('tasks', []);
+  taskDataProvider = new TaskDataProvider(storedTasks, context);
   taskManagerView = new TaskManagerView(context, taskDataProvider);
 
   // Register Task Manager view in sidebar
